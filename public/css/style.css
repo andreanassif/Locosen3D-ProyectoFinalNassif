@@ -1,0 +1,8 @@
+#logo{
+    max-width: 30%;
+}
+
+#body{
+    background: rgb(2,0,36);
+    background: linear-gradient(115deg, rgba(2,0,36,1) 0%, rgba(36,156,82,1) 62%, rgba(0,189,255,1) 100%);
+}
