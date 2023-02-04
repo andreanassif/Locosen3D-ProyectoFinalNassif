@@ -15,5 +15,6 @@ export const config = {
     MODO: objArguments.modo,
     PORT: objArguments.puerto,
     MONGO_AUTHENTICATION: process.env.MONGO_AUTHENTICATION,
-    MONGO_SESSION: process.env.MONGO_SESSION
+    MONGO_SESSION: process.env.MONGO_SESSION,
+   
 };
