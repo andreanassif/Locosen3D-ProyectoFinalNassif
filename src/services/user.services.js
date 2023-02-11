@@ -7,3 +7,4 @@ export const getUsers = async()=>{
 export const saveUser = async(body)=>{
     return await UserManager.save(body);
 };
+

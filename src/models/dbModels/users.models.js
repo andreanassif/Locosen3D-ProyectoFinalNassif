@@ -14,20 +14,19 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
-    correo: {
+    email: {
         type: String,
         required: true
     },
-    direccion: {
+    address: {
+        type: String
+    },
+    age: {
+        type: Number,
+        required: true
+    },
+    phone: {
         type: String,
-        required: true
-    },
-    edad: {
-        type: Number,
-        required: true
-    },
-    telefono: {
-        type: Number,
         required: true
     },
     avatar: {

@@ -1,9 +1,10 @@
 import express from "express";
-import * as UserController from "../controllers/user.controllers.js";
+import {UserRouter} from "./api/user.router.js";
+import { ProductRouter } from "./api/products.router.js";
 
 const router = express.Router();
 
-router.get("/users",UserController.getUsersController);
-router.post("/user",UserController.saveUserController);
+router.use("/users",UserRouter);
+router.use("/products",ProductRouter);
 
 export {router as apiRouter};
