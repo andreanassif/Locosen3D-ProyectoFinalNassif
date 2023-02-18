@@ -2,7 +2,6 @@ import express from "express";
 import session from "express-session";
 import MongoStore from "connect-mongo";
 import passport from "passport";
-
 import { logger } from "./loggers/logger.js";
 import { connectDB } from "./config/dbConfig.js";
 import {config} from "./config/config.js";
@@ -11,6 +10,7 @@ import { productsRouter } from "./router/api/products.router.js";
 import path from "path";
 import {fileURLToPath} from 'url';
 import { authRouter } from "./router/auth.js";
+import cors from "cors";
 
 
 connectDB();
@@ -18,6 +18,10 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
+app.use(cors({
+    origin:"http://localhost:3000",
+    methods:['PUT', 'POST']
+}))
 
 //config sesion usuarios
 app.use(session({

@@ -3,13 +3,14 @@ import { checkLogin } from "../../middlewares/checkLogin.js";
 import { options } from "../../config/options.js"; 
 import { FilesContainer } from "../../managers/files.manager.js";
 import { MysqlContainer } from "../../managers/mysql.manager.js"; 
-import { DaoProductsContainer } from "../../daos/index.js";
+//import { DaoProductsContainer } from "../../daos/index.js";
+import { getApiDao } from "../../daos/index.js";
 import { AdminRole } from "../../middlewares/checkRoles.js";
 
 //products manager
 //const ApiProducts = new FilesContainer(options.fileSystem.pathProducts);
 //const ApiProducts = new MysqlContainer(options.sqliteDB, "products");
-const ApiProducts = DaoProductsContainer;
+const ApiProducts = getApiDao.ApiProducts;
 
 // products router
 const productsRouter = express.Router();

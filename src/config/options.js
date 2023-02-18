@@ -9,7 +9,8 @@ export const options = {
 
     fileSystem:{
         pathProducts: 'products.json',
-        pathCarts: 'carts.json'
+        pathCarts: 'carts.json',
+        pathUsers: 'users.json'
     },
     sqliteDB:{
         client:"sqlite3",

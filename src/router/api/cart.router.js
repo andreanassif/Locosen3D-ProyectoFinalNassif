@@ -2,15 +2,16 @@ import express from "express";
 import { options } from "../../config/options.js";
 import { FilesContainer } from "../../managers/files.manager.js";
 import { MysqlContainer } from "../../managers/mysql.manager.js";
-import { DaoProductsContainer, DaoCartsContainer } from "../../daos/index.js";
+//import { DaoProductsContainer, DaoCartsContainer } from "../../daos/index.js";
+import { getApiDao } from "../../daos/index.js";
 
 //managers
 //const ApiProducts = new FileContainer (options.filesystem.pathProdcts);
 //const ApiCarts = new MysqlContainer(options.fileSystem.pathCarts);
 //const ApiProducts = new MysqlContainer(options.sqliteDB, "products");
 //const ApiCarts = new MysqlContainer(options.sqliteDB, "carts");
-const ApiCarts = DaoCartsContainer;
-const ApiProducts = DaoProductsContainer;
+const ApiCarts = getApiDao.ApiCarts;
+const ApiProducts = getApiDao.ApiProducts;
 
 //router carritos
 const cartsRouter = express.Router();

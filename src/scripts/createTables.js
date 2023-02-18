@@ -37,3 +37,5 @@ const createTable = async ()=>{
     }
     databaseSqliteDb.destroy();
 }
+
+createTable();

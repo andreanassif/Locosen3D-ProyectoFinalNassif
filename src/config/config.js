@@ -16,5 +16,11 @@ export const config = {
     PORT: objArguments.puerto,
     MONGO_AUTHENTICATION: process.env.MONGO_AUTHENTICATION,
     MONGO_SESSION: process.env.MONGO_SESSION,
-   
+    EMAIL_ADMIN: process.env.EMAIL_ADMIN,
+    PASS_ADMIN: process.env.PASS_ADMIN,
+    TWILIO_ID: process.env.TWILIO_ID,
+    TWILIO_TOKEN: process.env.TWILIO_TOKEN,
+    TWILIO_PHONE: process.env.TWILIO_PHONE,
+    TWILIO_WAP: process.env.TWILIO_WAP,
+    ADMIN_WAP: process.env.ADMIN_WAP
 };
