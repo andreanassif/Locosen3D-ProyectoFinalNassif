@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+/* import mongoose from "mongoose";
 import {options} from "./config.js";
 
 export const connectDB = ()=>{
@@ -7,4 +7,4 @@ export const connectDB = ()=>{
         if(error) return console.log(`Hubo un error al conectar la base de datos ${error}`);
         console.log("conexion exitosa!")
     });
-}
+} */

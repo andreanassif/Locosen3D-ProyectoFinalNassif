@@ -8,8 +8,8 @@ const request = supertest(app)
 
 describe("api products test",()=>{
     it("get products", async ()=>{
-        const response = await request.get("/products");
-        console.log(response);
-        //expect(response.status).equal(200)
+        const response = await request.get("/api/products");
+        //console.log(response);
+        expect(response.status).equal(200)
     })
 })

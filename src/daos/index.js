@@ -9,9 +9,10 @@ export async function getApiDao(databaseType){
     let DaoProductsContainer;
     let DaoCartsContainer;
     let DaoUserContainer;
+    console.log(databaseType)
 
     switch(databaseType){
-        case "archivos":
+        case "FILES":
             const {DaoProductsFile} = await import("./products/productsFiles.daos.js");
             const {DaoCartsFile} = await import("./carts/cartsFiles.daos.js");
             const {DaoUserFile} = await import("./users/usersFiles.daos.js");
@@ -20,7 +21,7 @@ export async function getApiDao(databaseType){
             DaoCartsContainer = new DaoCartsFile(options.fileSystem.pathCarts);
             DaoUserContainer = new DaoUserFile(options.fileSystem.pathUsers);
             break;
-        case "sql":
+        case "SQL":
             const {DaoUsersSQL} = await import("./users/usersSql.daos.js");
             const {DaoProductsSQL} = await import("./products/productsSql.daos.js");
             const {DaoCartsSQL} = await import("./carts/cartsSql.daos.js");
@@ -29,7 +30,7 @@ export async function getApiDao(databaseType){
             DaoCartsContainer = new DaoCartsSQL(options.sqliteDB,"carritos");
             DaoUserContainer = new DaoUsersSQL(options.sqliteDB, "users");
             break;
-        case "mongo":
+        case "MONGO":
             const {DaoUserMongo} = await import("./users/usersMongo.daos.js");
             const {DaoProductsMongo} = await import("./products/productsMongo.daos.js");
             const {DaoCartsMongo} = await import("./carts/cartsMongo.daos.js");

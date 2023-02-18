@@ -11,19 +11,22 @@ import { MongoContainer } from "../../managers/mongo.manager.js";
 //products manager
 //const ApiProducts = new FilesContainer(options.fileSystem.pathProducts);
 //const ApiProducts = new MysqlContainer(options.sqliteDB, "products");
-const ApiProducts = getApiDao(options.server.databaseType);
 
 // products router
 const productsRouter = express.Router();
 
 productsRouter.get('/', checkLogin,async (req, res) => {
-    const response = await ApiProducts.getAll()
+    const ApiDao = await getApiDao(options.server.databaseType);
+
+    const response = await ApiDao.DaoProductsContainer.getAll()
+    console.log(response)
     res.json(response)
+
 })
 
 productsRouter.get('/:id', async (req, res) => {
     const productId = req.params.id;
-    const response = await ApiProducts.getById(productId);
+    const response = await DaoProductsContainer.getById(productId);
     res.json(response);
 })
 

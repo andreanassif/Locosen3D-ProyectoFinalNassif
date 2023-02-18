@@ -37,9 +37,9 @@ app.use(passport.session());
 
 //routers
 app.use('/api/auth', authRouter);
-app.use('/api/products', apiRouter);
-app.use('/api/cart', apiRouter);
-app.use('/api/users', apiRouter);
+app.use('/api', apiRouter);
+//app.use('/api/cart', apiRouter);
+//app.use('/api/users', apiRouter);
 
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));

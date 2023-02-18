@@ -10,7 +10,7 @@ class MyMongoClient{
     async connect(){
         try {
             this.client.set('strictQuery', false);
-            await this.client.connect(options.mongoDB.MONGO_AUTHENTICATION );
+            this.client.connect(options.mongoDB.MONGO_AUTHENTICATION );
             console.log("conexion exitosa a la base de datos");
         } catch (error) {
             throw new Error(`Hubo un error ${error}`)
