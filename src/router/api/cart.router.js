@@ -1,5 +1,5 @@
 import express from "express";
-import { options } from "../../config/options.js";
+import { options } from "../../config/config.js";
 import { FilesContainer } from "../../managers/files.manager.js";
 import { MysqlContainer } from "../../managers/mysql.manager.js";
 //import { DaoProductsContainer, DaoCartsContainer } from "../../daos/index.js";
@@ -10,8 +10,7 @@ import { getApiDao } from "../../daos/index.js";
 //const ApiCarts = new MysqlContainer(options.fileSystem.pathCarts);
 //const ApiProducts = new MysqlContainer(options.sqliteDB, "products");
 //const ApiCarts = new MysqlContainer(options.sqliteDB, "carts");
-const ApiCarts = getApiDao.ApiCarts;
-const ApiProducts = getApiDao.ApiProducts;
+const {ApiCarts, ApiProducts} = getApiDao(options.server.databaseType);
 
 //router carritos
 const cartsRouter = express.Router();

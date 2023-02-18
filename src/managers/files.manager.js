@@ -1,4 +1,4 @@
-import {options} from "../config/options.js";
+import {options} from "../config/config.js";
 import fs from "fs";
 import { logger } from "../loggers/logger.js";
 

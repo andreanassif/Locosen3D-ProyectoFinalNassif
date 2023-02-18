@@ -1,7 +1,6 @@
 //import {UserManager} from "../models/index.js";
-
-import { getApiDao } from "../daos/index.js";
-import {options} from "../config/options.js";
+import { getApiDao } from "../daos/index.js"; // se importa la fabrica
+import {options} from "../config/config.js";
 //traer validaciones cuando las configure de validations/users.validation.js
 
 const {DaoProductContainer, DaoCartContainer, DaoUserContainer} = await getApiDao(options.server.databaseType);
@@ -23,3 +22,6 @@ export const deleteUser = async(userID)=>{
     return await DaoUserContainer.deleteById(userID)
 }
 
+export const deleteUsers = async()=>{
+    return await DaoUserContainer.delete();
+}

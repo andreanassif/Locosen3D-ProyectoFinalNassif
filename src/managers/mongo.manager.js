@@ -1,7 +1,6 @@
-import { connectDB } from "../config/dbConfig.js";
 import { logger } from "../loggers/logger.js";
+import { convertToDto } from "../dto/user.dto.js";
 
-connectDB();
 class MongoContainer {
   constructor(model) {
     this.model = model;
@@ -11,19 +10,23 @@ class MongoContainer {
     try {
       const response = await this.model.findById(id);
       const data = JSON.parse(JSON.stringify(response)); //convertir a formato json
-      return logger.info(data);
+      const responseDto = convertToDto(data);
+      //return logger.info(responseDto);
+      return responseDto
     } catch (error) {
-      throw new Error(logger.error(`Hubo un error ${error}`));
+      throw new Error(`Hubo un error ${error}`);
     }
   }
 
-  async getAll() {
+  async getAll(){
     try {
       const response = await this.model.find();
       const data = JSON.parse(JSON.stringify(response));
-      return logger.info(data);
+      const responseDto = convertToDto(data)
+      //return logger.info(data);
+      return(responseDto);
     } catch (error) {
-      throw new Error(logger.error(`Hubo un error ${error}`));
+      throw new Error(`Hubo un error ${error}`);
     }
   }
 
@@ -54,6 +57,15 @@ class MongoContainer {
       throw new Error(logger.error(`Hubo un error ${error}`));
     }
   }
+
+  async delete(){
+    try {
+        await this.model.deleteMany({});
+        return "delete all successfully";
+    } catch (error) {
+        throw new Error(`Hubo un error ${error}`);
+    }
+}
 }
 
 export { MongoContainer };

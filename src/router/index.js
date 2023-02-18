@@ -1,10 +1,15 @@
 import express from "express";
-import {UserRouter} from "./api/user.router.js";
-import { ProductRouter } from "./api/products.router.js";
+import {UserRouter} from "./api/user.routers.js";
+import { productsRouter } from "./api/products.router.js";
+import { cartsRouter } from "./api/cart.router.js";
+
+
 
 const router = express.Router();
 
+
 router.use("/users",UserRouter);
-router.use("/products",ProductRouter);
+router.use("/products",productsRouter);
+router.use("/cart", cartsRouter)
 
 export {router as apiRouter};

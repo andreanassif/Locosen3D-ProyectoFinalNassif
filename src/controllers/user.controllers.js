@@ -1,4 +1,4 @@
-import {getUsers, saveUser, deleteUser} from "../services/user.services.js";
+import {getUsers, saveUser, deleteUser, deleteUsers} from "../services/user.services.js";
 
 export const getUsersController = async(req,res)=>{
     try {
@@ -25,5 +25,14 @@ export const deleteUserController = async(req,res)=>{
         res.status(200).json({message:response});
     } catch (error) {
         res.status(400).json({message:`Hubo un error ${error}`})
+    }
+}
+
+export const deleteUsersController = async(req,res)=>{
+    try {
+        const response = await deleteUsers();
+        res.status(200).json({message:response});
+    } catch (error) {
+        res.status(400).json({message:`Hubo un error ${error}`});
     }
 }
