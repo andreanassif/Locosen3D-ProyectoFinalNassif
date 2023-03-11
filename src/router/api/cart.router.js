@@ -6,6 +6,7 @@ import { FilesContainer } from "../../managers/files.manager.js";
 import { MysqlContainer } from "../../managers/mysql.manager.js";
 //import { DaoProductsContainer, DaoCartsContainer } from "../../daos/index.js";
 import { getApiDao } from "../../daos/index.js";
+import * as CartController from "../../controllers/cart.controller.js"
 
 //managers
 //const ApiProducts = new FileContainer (options.filesystem.pathProdcts);
@@ -14,10 +15,20 @@ import { getApiDao } from "../../daos/index.js";
 //const ApiCarts = new MysqlContainer(options.sqliteDB, "carts");
 //const {ApiCarts, ApiProducts} = getApiDao(options.server.databaseType);
 
-//router carritos
+
+//http://localhost:8080/api/cart
 const cartsRouter = express.Router();
 
-cartsRouter.get('/', async (req, res) => {
+cartsRouter.post('/', CartController.saveControllers)
+
+cartsRouter.post('/:id', CartController.saveControllers)
+
+cartsRouter.get('/:id', CartController.getByIdControllers)
+
+cartsRouter.delete('/:id', CartController.deleteByIdControllers)
+
+
+/* cartsRouter.get('/', async (req, res) => {
     const response = await ApiCarts.getAll();
     res.json(response);
 })
@@ -83,6 +94,6 @@ cartsRouter.delete('/:id/productos/:idProd', async (req, res) => {
             res.json({message:`El producto no se encontro en el carrito: ${productId}`});
         }
     }
-})
+}) */
 
 export {cartsRouter}

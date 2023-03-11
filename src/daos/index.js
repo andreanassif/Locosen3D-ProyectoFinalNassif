@@ -9,6 +9,8 @@ export async function getApiDao(databaseType){
     let DaoProductsContainer;
     let DaoCartsContainer;
     let DaoUserContainer;
+    //let DaoOrderContainer;
+    //let DaoMsjContainer;
     console.log(databaseType)
 
     switch(databaseType){
