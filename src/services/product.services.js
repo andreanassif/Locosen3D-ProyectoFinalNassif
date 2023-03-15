@@ -1,9 +1,8 @@
 //import {ProductManager} from "../models/index.js";
-import { getApiDao } from "../daos/index.js"; // se importa la fabrica
-import {options} from "../config/config.js";
+//import { getApiDao } from "../daos/index.js"; // se importa la fabrica
+//import {options} from "../config/config.js";
+import { DaoProductsContainer } from "../config/daosConfig.js";
 
-
-const {DaoProductsContainer, DaoCartContainer, DaoUserContainer} = await getApiDao(options.server.databaseType);
 
 export const getProducts = async()=>{
    return await DaoProductsContainer.getAll();

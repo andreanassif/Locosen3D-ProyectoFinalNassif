@@ -1,11 +1,9 @@
 import { MongoContainer } from "../../managers/mongo.manager.js";
 
-class DaoUserMongo extends MongoContainer{
+class DaoOrderMongo extends MongoContainer{
     constructor(model, dto){
-        super(model, dto)
+        super(model,dto)
     }
-
-
 }
 
-export {DaoUserMongo}
+export {DaoOrderMongo}

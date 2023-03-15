@@ -4,11 +4,13 @@ import MongoStore from "connect-mongo";
 import passport from "passport";
 import { logger } from "./loggers/logger.js";
 import {options} from "./config/config.js";
+import "./config/daosConfig.js";
 import path from "path";
 import {fileURLToPath} from 'url';
 import { authRouter } from "./router/auth.js";
 import cors from "cors";
 import { apiRouter } from "./router/index.js";
+
 
 const app = express();
 app.use(express.json());

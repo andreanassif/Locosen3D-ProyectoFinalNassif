@@ -1,16 +1,17 @@
 import { logger } from "../loggers/logger.js";
-import { convertToDto } from "../dto/user.dto.js";
+//import { convertToDto } from "../dto/user.dto.js"; // dto mal implementado
 
 class MongoContainer {
-  constructor(model) {
+  constructor(model, dto) {
     this.model = model;
+    this.dto = dto;
   }
 
   async getById(id) {
     try {
       const response = await this.model.findById(id);
       const data = JSON.parse(JSON.stringify(response)); //convertir a formato json
-      const responseDto = convertToDto(data);
+      const responseDto = this.dto(data);
       //return logger.info(responseDto);
       return responseDto
     } catch (error) {
@@ -22,7 +23,7 @@ class MongoContainer {
     try {
       const response = await this.model.find();
       const data = JSON.parse(JSON.stringify(response));
-      const responseDto = convertToDto(data)
+      const responseDto = this.dto(data)
       //return logger.info(data);
       return(responseDto);
     } catch (error) {

@@ -1,20 +1,18 @@
-import {getApiDao} from "../daos/index.js";
-import {options} from "../config/config.js";
-
-const {DaoCartsContainer} = await getApiDao(options.server.databaseType)
+import { DaoCartContainer } from "../config/daosConfig.js"
 
 export const getById = async(id)=>{
-    return await DaoCartsContainer.getById(id)
+    return await DaoCartContainer.getById(id)
 }
 
 export const save = async(body)=>{
-    return await DaoCartsContainer.save(body)
+    return await DaoCartContainer.save(body)
 }
 
-export const putById = async(id,update)=>{
-    return await DaoCartsContainer.putById(id, update)
+
+export const cleanCart = async(id)=>{
+    return await DaoCartContainer.cleanCart(id)
 }
 
-export const deleteById = async(id)=>{
-    return await DaoCartsContainer.deleteById(id)
+export const removeById = async(id)=>{
+    return await DaoCartContainer.removeById(id)
 }

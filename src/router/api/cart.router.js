@@ -19,13 +19,13 @@ import * as CartController from "../../controllers/cart.controller.js"
 //http://localhost:8080/api/cart
 const cartsRouter = express.Router();
 
-cartsRouter.post('/', CartController.saveControllers)
+cartsRouter.post('/', CartController.saveCartControllers )
 
-cartsRouter.post('/:id', CartController.saveControllers)
+cartsRouter.post('/:id', CartController.saveCartControllers)
 
-cartsRouter.get('/:id', CartController.getByIdControllers)
+cartsRouter.get('/:id', CartController.getCartController)
 
-cartsRouter.delete('/:id', CartController.deleteByIdControllers)
+cartsRouter.delete('/:id', CartController.cleanCartControllers)
 
 
 /* cartsRouter.get('/', async (req, res) => {

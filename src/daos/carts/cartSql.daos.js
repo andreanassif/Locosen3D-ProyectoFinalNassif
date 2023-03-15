@@ -5,3 +5,5 @@ class DaoCartsSQL extends MysqlContainer{
         super(options, tableName)
     }
 }
+
+export {DaoCartsSQL};

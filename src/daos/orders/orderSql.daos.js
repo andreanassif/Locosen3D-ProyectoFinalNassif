@@ -1,9 +1,9 @@
 import { MysqlContainer } from "../../managers/mysql.manager.js";
 
-class DaoProductsSQL extends MysqlContainer{
+class DaoOrderSQL extends MysqlContainer{
     constructor(options, tableName){
         super(options, tableName)
     }
 }
 
-export {DaoProductsSQL};
+export {DaoOrderSQL};
