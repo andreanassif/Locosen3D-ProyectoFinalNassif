@@ -6,6 +6,10 @@ const cartSchema = new mongoose.Schema({
     id:{
         type:String
     },
+    username:{
+        type:String,
+        require: true
+    },
     products:{
         type: Array,
         require: true

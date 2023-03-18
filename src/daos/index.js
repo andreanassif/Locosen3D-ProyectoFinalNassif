@@ -1,13 +1,14 @@
 // creamos la fabrica para unificar 
-import { UserModel } from "../models/dbModels/users.models.js"
+import { UserModel } from "../models/dbModels/users.models.js";
 import { ProductModel } from "../models/dbModels/products.models.js";
 import { CartModel } from "../models/dbModels/cart.models.js";
 import {OrderModel} from "../models/dbModels/order.models.js"
 import {options} from "../config/config.js";
 import { MyMongoClient } from "../models/clients/dbClientMongo.js";
-import {convertToDto} from "../dto/user.dto.js"
-import {productDto} from "../dto/product.dto.js"
-import {OrderDto} from "../dto/order.dto.js"
+import {convertToDto} from "../dto/user.dto.js";
+import {productDto} from "../dto/product.dto.js";
+import {OrderDto} from "../dto/order.dto.js";
+import {CartDto} from "../dto/cart.dto.js";
 
 export async function getApiDao(databaseType){
     let DaoProductsContainer;
@@ -49,7 +50,7 @@ export async function getApiDao(databaseType){
             const client = new MyMongoClient();
             await client.connect();
             DaoProductsContainer = new DaoProductsMongo(ProductModel, productDto);
-            DaoCartsContainer = new DaoCartsMongo(CartModel);
+            DaoCartsContainer = new DaoCartsMongo(CartModel, CartDto);
             DaoUserContainer = new DaoUserMongo(UserModel, convertToDto);
             DaoOrderContainer = new DaoOrderMongo(OrderModel, OrderDto);
             

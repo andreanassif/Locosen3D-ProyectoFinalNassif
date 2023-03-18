@@ -3,21 +3,21 @@ import {MongoContainer} from "../../managers/mongo.manager.js";
 
 
 class DaoCartsMongo extends MongoContainer{
-    constructor(model){
-        super(model)
+    constructor(model, dto){
+        super(model, dto)
 
 
     }
 
-    // si quiero usar dtos, tengo que agregarlos aca
-    async cleanCart(id){
-        try {
-            
-        } catch (error) {
-            
-        }
+    // si quiero usar dtos, tengo que agregarlos aca (ESTAN EN EL CART CONTROLLER)
+    //async cleanCart(id){
+    //    try {
+    //        
+    //    } catch (error) {
+    //        
+    //    }
         //logica de eliminar el carrito con el id
-    }
+    //}
 }
 
 export {DaoCartsMongo}

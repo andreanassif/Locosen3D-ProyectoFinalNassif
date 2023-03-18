@@ -3,15 +3,17 @@
     {{#if error}}
         <p>{{error}}</p>
     {{/if}}
-    <form action="/signup" method="POST">
+    <form action="/registro" method="POST">
         <label>Nombre:</label>
-        <input class="form-control" type="text" name="name" placeholder="Ingresa tu nombre"/>
+        <input class="form-control" type="text" name="username" placeholder="Ingresa tu nombre"/>
         <label>Correo:</label>
         <input class="form-control" type="text" name="email" placeholder="Ingresa tu correo"/>
         <label>password:</label>
         <input class="form-control" type="password" name="password" placeholder="Ingresa la contraseña"/>
         <label>Telefono:</label>
-        <input class="form-control" type="number" name="telefono" placeholder="Ingresa su telefono"/>
+        <input class="form-control" type="number" name="phone" placeholder="Ingrese su telefono"/>
+        <label>Dirección:</label>
+        <input class="form-control" type="text" name="address" placeholder="Ingresa tu dirección"/>
         <label>Edad:</label>
         <input class="form-control" type="number" name="edad" placeholder="Ingresa tu edad"/>
         <label>Avatar:</label>
