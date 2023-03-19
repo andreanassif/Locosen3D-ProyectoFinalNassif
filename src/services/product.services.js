@@ -1,6 +1,3 @@
-//import {ProductManager} from "../models/index.js";
-//import { getApiDao } from "../daos/index.js"; // se importa la fabrica
-//import {options} from "../config/config.js";
 import { DaoProductsContainer } from "../config/daosConfig.js";
 
 
@@ -18,7 +15,7 @@ export const deleteProd = async(id)=>{
     return await DaoProductsContainer.deleteById(id)
 }
 export const updateProd = async(id, body)=>{
-    return await DaoProductsContainer.putById(id, body)
+    return await DaoProductsContainer.updateById(id,body)
 }
 
 export const getImgById = async(id, body)=>{

@@ -1,9 +1,16 @@
 import { getApiDao } from "../daos/index.js";
-import {options} from "./config.js";
+import { options } from "./config.js";
 
+const {
+  DaoProductsContainer,
+  DaoCartsContainer,
+  DaoUserContainer,
+  DaoOrderContainer,
+} = await getApiDao(options.server.databaseType);
 
-const {DaoProductsContainer, DaoCartContainer, DaoUserContainer, DaoOrderContainer} = await getApiDao(options.server.databaseType);
-
-
-
-export {DaoCartContainer,DaoProductsContainer,DaoUserContainer, DaoOrderContainer}
+export {
+  DaoCartsContainer,
+  DaoProductsContainer,
+  DaoUserContainer,
+  DaoOrderContainer,
+};

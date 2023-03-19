@@ -13,19 +13,19 @@ class MongoContainer {
       const data = JSON.parse(JSON.stringify(response)); //convertir a formato json
       const responseDto = this.dto(data);
       //return logger.info(responseDto);
-      return responseDto
+      return responseDto;
     } catch (error) {
       throw new Error(`Hubo un error ${error}`);
     }
   }
 
-  async getAll(){
+  async getAll() {
     try {
       const response = await this.model.find();
       const data = JSON.parse(JSON.stringify(response));
-      const responseDto = this.dto(data)
+      const responseDto = this.dto(data);
       //return logger.info(data);
-      return(responseDto);
+      return responseDto;
     } catch (error) {
       throw new Error(`Hubo un error ${error}`);
     }
@@ -35,7 +35,8 @@ class MongoContainer {
     try {
       const response = await this.model.create(body);
       const data = JSON.parse(JSON.stringify(response));
-      return logger.info(data);
+      logger.info(data);
+      return data;
     } catch (error) {
       throw new Error(logger.error(`Hubo un error ${error}`));
     }
@@ -59,14 +60,14 @@ class MongoContainer {
     }
   }
 
-  async delete(){
+  async delete() {
     try {
-        await this.model.deleteMany({});
-        return "delete all successfully";
+      await this.model.deleteMany({});
+      return "delete all successfully";
     } catch (error) {
-        throw new Error(`Hubo un error ${error}`);
+      throw new Error(`Hubo un error ${error}`);
     }
-}
+  }
 }
 
 export { MongoContainer };

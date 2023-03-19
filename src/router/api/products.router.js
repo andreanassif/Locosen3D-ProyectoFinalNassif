@@ -1,26 +1,49 @@
 import express from "express";
 import { AdminRole } from "../../middlewares/checkRoles.js";
-import * as ProductsController from "../../controllers/product.controller.js"
-
+import * as ProductsController from "../../controllers/product.controller.js";
+import { getToken } from "../../middlewares/token.js";
 
 // http://localhost:8080/api/products
 
 const productsRouter = express.Router();
 
-productsRouter.get('/', ProductsController.getProdsControllers)
+productsRouter.get("/", ProductsController.getProdsControllers);
 
-productsRouter.get('/:id', ProductsController.getProdByIdControllers)
+productsRouter.get("/:id", ProductsController.getProdByIdControllers);
 
-productsRouter.get('/category/:category', ProductsController.getProdByCategoryControllers)
+productsRouter.get(
+  "/category/:category",
+  ProductsController.getProdByCategoryControllers
+);
 
-productsRouter.get('/img/:id', ProductsController.getImgByIdControllers)
+productsRouter.get("/img/:id", ProductsController.getImgByIdControllers);
 
-productsRouter.post('/', AdminRole, ProductsController.saveProdController)
+productsRouter.post(
+  "/",
+  getToken,
+  AdminRole,
+  ProductsController.saveProdController
+);
 
-productsRouter.put('/:id', AdminRole, ProductsController.updateProdController)
+productsRouter.put(
+  "/:id",
+  getToken,
+  AdminRole,
+  ProductsController.updateProdController
+);
 
-productsRouter.delete('/', AdminRole, ProductsController.deleteAllController)
+productsRouter.delete(
+  "/",
+  getToken,
+  AdminRole,
+  ProductsController.deleteAllController
+);
 
-productsRouter.delete('/:id', AdminRole, ProductsController.deleteProdController)
+productsRouter.delete(
+  "/:id",
+  getToken,
+  AdminRole,
+  ProductsController.deleteProdController
+);
 
-export {productsRouter}
+export { productsRouter };

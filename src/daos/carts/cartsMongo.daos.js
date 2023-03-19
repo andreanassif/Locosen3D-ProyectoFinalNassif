@@ -6,7 +6,9 @@ class DaoCartsMongo extends MongoContainer{
     constructor(model, dto){
         super(model, dto)
 
-
+    }
+    async addProdById(productID){
+        return await this.model.push(productID)
     }
 
     // si quiero usar dtos, tengo que agregarlos aca (ESTAN EN EL CART CONTROLLER)
@@ -16,7 +18,10 @@ class DaoCartsMongo extends MongoContainer{
     //    } catch (error) {
     //        
     //    }
-        //logica de eliminar el carrito con el id
+        //logica de eliminar el carrito con el id 
+
+        //agregar el producto
+        //
     //}
 }
 
