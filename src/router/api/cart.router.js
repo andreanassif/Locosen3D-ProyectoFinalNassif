@@ -8,7 +8,7 @@ import { AdminRole } from "../../middlewares/checkRoles.js";
 //http://localhost:8080/api/cart
 const cartsRouter = express.Router();
 
-cartsRouter.post("/:id", getToken, CartController.addProdByIdController);
+cartsRouter.post("/:id", getToken, CartController.addProdInCartByIdController);
 
 cartsRouter.delete("/:id", getToken, CartController.cleanCartControllers);
 

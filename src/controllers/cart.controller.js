@@ -1,12 +1,12 @@
-import { getCartById, addProdById, cleanCart, getAllCarts, removeProdById } from "../services/cart.services.js";
+import { getCartById, addProdInCartById, cleanCart, getAllCarts, removeProdById } from "../services/cart.services.js";
 import { logger, loggerError, loggerWarn } from "../loggers/logger.js";
 import { saveOrder } from "../services/order.services.js";
 
 //añadir producto al carrito
-export const addProdByIdController = async(req,res)=>{
+export const addProdInCartByIdController = async(req,res)=>{
   try {
-    const { userID, productID } = req.params;
-    const prodInCart = await addProdById(productID)
+    const { productID, userID } = req.params;
+    const prodInCart = await addProdInCartById(productID)
     console.log(prodInCart)
     const cartFull = await getCartById(userID)
     res.status(200).json({

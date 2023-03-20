@@ -1,10 +1,10 @@
 class CartDto{
     constructor(cart, userID, username, total, quantity){
-        this.userID = userID,
-        this.cart = cart,
-        this.username = username,
-        this.total = total,
-        this.quantity = quantity
+        this.userID = userID._id,
+        this.cart = cart.body,
+        this.username = username.username,
+        this.total = total.total,
+        this.quantity = quantity.quantity
         
     }
 }

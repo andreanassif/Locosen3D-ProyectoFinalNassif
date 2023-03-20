@@ -1,4 +1,4 @@
-import { logger } from "../loggers/logger.js";
+import { logger, loggerError, loggerWarn } from "../loggers/logger.js";
 
 class MongoContainer {
   constructor(model, dto) {
@@ -14,7 +14,7 @@ class MongoContainer {
       logger.info(responseDto);
       return responseDto;
     } catch (error) {
-      throw new Error(`Hubo un error ${error}`);
+      loggerError.error(`Hubo un error ${error}`);
     }
   }
 
@@ -26,7 +26,7 @@ class MongoContainer {
       logger.info(data);
       return responseDto;
     } catch (error) {
-      throw new Error(`Hubo un error ${error}`);
+      loggerError.error(`Hubo un error ${error}`);
     }
   }
 
@@ -37,25 +37,27 @@ class MongoContainer {
       logger.info(data);
       return data;
     } catch (error) {
-      throw new Error(logger.error(`Hubo un error ${error}`));
+      loggerError.error(`Hubo un error ${error}`);
     }
   }
 
-  async updateById(body, id) {
+  async updateById(id, body) {
     try {
       await this.model.findByIdAndUpdate(id, body, { new: true });
-      return logger.info("Update successfully");
+      logger.info("Update successfully");
+      return
     } catch (error) {
-      throw new Error(logger.error(`Hubo un error ${error}`));
+      loggerError.error(`Hubo un error ${error}`);
     }
   }
 
   async deleteById(id) {
     try {
       await this.model.findByIdAndDelete(id);
-      return logger.info("delete successfully");
+      logger.info("delete successfully");
+      return
     } catch (error) {
-      throw new Error(logger.error(`Hubo un error ${error}`));
+      loggerError.error(`Hubo un error ${error}`);
     }
   }
 
@@ -64,7 +66,17 @@ class MongoContainer {
       await this.model.deleteMany({});
       return "delete all successfully";
     } catch (error) {
-      throw new Error(`Hubo un error ${error}`);
+      loggerError.error(`Hubo un error ${error}`);
+    }
+  }
+
+  async addPodInCartById(productID, cartID){
+    try {
+      await this.model.findByIdAndUpdate(productID, cartID);
+      logger.info("Update successfully");
+      return
+    } catch (error) {
+      loggerError.error(`Hubo un error ${error}`);
     }
   }
 }

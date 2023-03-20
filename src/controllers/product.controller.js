@@ -12,9 +12,9 @@ export const getProdsControllers = async(req,res)=>{
 }
 
 export const getProdByCategoryControllers = async(req,res)=>{
-    const {category} = req.params
-    console.log(category);
     try{
+        const {category} = req.params
+        console.log(category);
         const response = await getProducts()
         const data = response.filter((e)=>e.category === category)
         if(data){
@@ -29,8 +29,8 @@ export const getProdByCategoryControllers = async(req,res)=>{
 }
 
 export const getProdByIdControllers = async(req,res)=>{
-    const {id} = req.params
     try{
+        const {id} = req.params
         const response = await getProdById(id)
 
         if(response){
@@ -45,8 +45,8 @@ export const getProdByIdControllers = async(req,res)=>{
 }
 
 export const getImgByIdControllers = async(req,res)=>{
-    const {id} = req.params
     try{
+        const {id} = req.params
         const response = await getImgById(id)
 
         if(response){
@@ -60,8 +60,8 @@ export const getImgByIdControllers = async(req,res)=>{
     }
 }
 export const saveProdController = async(req,res)=>{
-    const newProd = req.body
     try{
+        const newProd = req.body
         const data = await saveProd(newProd)
         const response = await getProducts()
         res.status(200).send(response)
@@ -72,9 +72,9 @@ export const saveProdController = async(req,res)=>{
 }
 
 export const updateProdController = async(req,res)=>{
-    const {id} = req.params
-    const update = req.body
     try{
+        const {id} = req.params
+        const update = req.body
         const existe = await getProdById(id)
         
         if (!existe){
@@ -89,8 +89,8 @@ export const updateProdController = async(req,res)=>{
     }
 }
 export const deleteProdController = async(req,res)=>{
-    const {id} = req.params
     try{
+        const {id} = req.params
         const existe = await getProdById(id)
         
         if (!existe){
