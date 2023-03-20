@@ -55,3 +55,14 @@ export const saveOrderController = async (req,res)=> {
         loggerError.error(error)
     }
 }
+
+export const deleteOrderController = async(req,res)=>{
+    try {
+        const {id} = req.params;
+        const response = await deleteOrder(id);
+        res.status(200).send(response)
+    } catch (error) {
+        es.status(400).json({message:`Hubo un arror ${error}`})
+        loggerError.error(error)
+    }
+}

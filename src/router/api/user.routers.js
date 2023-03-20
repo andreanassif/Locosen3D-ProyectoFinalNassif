@@ -1,11 +1,13 @@
 import express from "express";
 import * as UserController from "../../controllers/user.controllers.js";
+import { getToken } from "../../middlewares/token.js";
+import { AdminRole } from "../../middlewares/checkRoles.js";
 
 const router = express.Router();
 
-router.get("/",UserController.getUsersController);
+router.get("/", getToken, AdminRole, UserController.getUsersController);
 router.post("/",UserController.saveUserController);
-router.delete("/:id",UserController.deleteUserController);
-router.delete("/",UserController.deleteUsersController);
+router.delete("/:id", getToken, AdminRole, UserController.deleteUserController);
+router.delete("/", getToken, AdminRole, UserController.deleteUsersController);
 
 export {router as UserRouter};

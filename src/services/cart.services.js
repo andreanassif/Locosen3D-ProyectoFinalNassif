@@ -18,5 +18,9 @@ export const removeProdById = async (productID) => {
 };
 
 export const addProdById = async (productID) => {
-  return await DaoCartsContainer.push(productID);
+  return await DaoCartsContainer
+};
+
+export const getAllCarts = async () => {
+  return await DaoCartsContainer.getAll();
 };

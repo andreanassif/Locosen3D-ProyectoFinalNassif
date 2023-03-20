@@ -9,4 +9,7 @@ orderRouter.get('/', OrderController.getOrderController)
 
 orderRouter.post('/', OrderController.saveOrderController)
 
+orderRouter.delete("/:id", OrderController.deleteOrderController)
+
+
 export {orderRouter}

@@ -1,66 +1,102 @@
-import { getCartById, addProdById, cleanCart } from "../services/cart.services.js";
+import { getCartById, addProdById, cleanCart, getAllCarts, removeProdById } from "../services/cart.services.js";
 import { logger, loggerError, loggerWarn } from "../loggers/logger.js";
+import { saveOrder } from "../services/order.services.js";
 
-//agregar acciones del usuario que pueden venir del front end
-
+//añadir producto al carrito
 export const addProdByIdController = async(req,res)=>{
   try {
-    const { id } = req.params;
-    const response = await addProdById(id)
-    res.status(200).send(response);
+    const { userID, productID } = req.params;
+    const prodInCart = await addProdById(productID)
+    console.log(prodInCart)
+    const cartFull = await getCartById(userID)
+    res.status(200).json({
+        message: `El producto ${productID} fue agregado al carrito ${userID} exitosamente`,
+        response: cartFull
+    });
   } catch (error) {
     res.status(400).json({ message: `Hubo un error ${error}` });
     loggerError.error(error);
   }
 }
 
+//Consultar Carrito
 export const getCartController = async (req, res) => {
   try {
-    const { id } = req.params;
-    if (!id) {
-      const response = await getCartById(id);
-      return res.status(200).send(response);
+    const { cartID } = req.params;
+    if (!cartID) {
+      const cartQuery = await getCartById(cartID);
+      return res.status(200).json({
+        message: `El Carrito con Id Nro ${cartID} tiene los siguientes productos`,
+        response: cartQuery
+      });
     }
   } catch (error) {
     res.status(400).json({ message: `Hubo un error ${error}` });
     loggerError.error(error);
   }
 };
+
+//ver todos los carritos solo para el usuario 'admin' 
+
+export const getAllCartsController = async (req,res) =>{
+  try {
+    const allCarts = await  getAllCarts();
+    if(allCarts){
+      res.status(200).send("allCarts", {
+        allCarts: allCarts
+      })
+    }
+  } catch (error) {
+    res.status(400).json({ message: `Hubo un error ${error}` });
+    loggerError.error(error);
+  }
+}
+
+//limpiar el carrito por el usuario
 
 export const cleanCartControllers = async (req, res) => {
   try {
-    const { id } = req.params;
-    const response = await cleanCart(id);
-    res.status(200).send(response);
+    const { cartID} = req.params;
+    const emptyCart = await cleanCart(cartID);
+    res.status(200).json({
+      message: `El Carrito con Id Nro ${cartID} se vació correctamente:`,
+      response: emptyCart
+    });
   } catch (error) {
     res.status(400).json({ message: `Hubo un error ${error}` });
     loggerError.error(error);
   }
 };
 
+
+//eliminar un producto del carrito
 export const deleteProdCartController = async (req, res) => {
   try {
-    const { id } = req.params;
-    const data = req.body;
-    if (!id) {
-      const response = await remove(data);
-      res.status(200).send(response);
-    } else {
-      const response = await removeById(id, data);
-      res.status(200).send(response);
-    }
+    const { cartID, productID } = req.params;
+    await removeProdById(productID)
+    const finalCart = await getCartById(cartID)
+    res.status(200).json ({
+      message: `El producto ${productID}, se ha eliminado correctamente del carrito ${cartID} `,
+      response: carritoFinal
+      })
   } catch (error) {
     res.status(400).json({ message: `Hubo un error ${error}` });
     loggerError.error(error);
   }
 };
 
-// usuario vea carrito get by id
-
-// usuario tiene que poder agregar prod
-
-//usuario tiene que poder eliminar un prod
-
-//usuario puede limpiar su carrito en un solo paso
-
 //usuario tiene que poder hacer el checkout: cant productos, precio total, id de prodcutos para disminuir stock, aplicar impuestos, costos de envio funciones de helpers sin exportarlas
+export const checkOut = async(req,res)=>{
+  try {
+    const {body} = req;
+    const newOrder = await saveOrder(body)
+    console.log(newOrder._id);
+    res.status(200).json({
+      message: `La orden ${newOrder._id} se ha generado correctamente`,
+      response: newOrder
+    })    
+  } catch (error) {
+    res.status(400).json({ message: `Hubo un error ${error}` });
+    loggerError.error(error);
+  }
+}
