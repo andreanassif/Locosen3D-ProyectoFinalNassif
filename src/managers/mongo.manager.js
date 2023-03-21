@@ -70,9 +70,10 @@ class MongoContainer {
     }
   }
 
-  async addPodInCartById(productID, cartID){
+  async addPodInCartById(id){
     try {
-      await this.model.findByIdAndUpdate(productID, cartID);
+      await this.model.findByIdAndUpdate({id});
+      console.log(id)
       logger.info("Update successfully");
       return
     } catch (error) {

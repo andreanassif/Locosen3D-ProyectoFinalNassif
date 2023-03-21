@@ -5,13 +5,11 @@ import { saveOrder } from "../services/order.services.js";
 //añadir producto al carrito
 export const addProdInCartByIdController = async(req,res)=>{
   try {
-    const { productID, userID } = req.params;
-    const prodInCart = await addProdInCartById(productID)
-    console.log(prodInCart)
-    const cartFull = await getCartById(userID)
+    const { id } = req.body;
+    console.log(id)
+    await addProdInCartById(id)
     res.status(200).json({
-        message: `El producto ${productID} fue agregado al carrito ${userID} exitosamente`,
-        response: cartFull
+        message: `El producto ${id} fue agregado al carrito exitosamente`,
     });
   } catch (error) {
     res.status(400).json({ message: `Hubo un error ${error}` });
