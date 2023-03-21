@@ -13,12 +13,12 @@ export const cleanCart = async (cartID) => {
   return await DaoCartsContainer.cleanCart(cartID);
 };
 
-export const removeProdById = async (productID) => {
-  return await DaoCartsContainer.removeById(productID);
+export const removeProdById = async (cartID, productID) => {
+  return await DaoCartsContainer.deletePodInCartById(cartID, productID);
 };
 
-export const addProdInCartById = async (productID) => {
-  return await DaoCartsContainer.addPodInCartById(productID);
+export const addProdInCartById = async (cartID, productID) => {
+  return await DaoCartsContainer.addPodInCartById(cartID ,productID);
 };
 
 export const getAllCarts = async () => {

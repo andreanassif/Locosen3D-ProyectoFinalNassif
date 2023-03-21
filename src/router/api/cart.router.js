@@ -8,14 +8,14 @@ import { AdminRole } from "../../middlewares/checkRoles.js";
 //http://localhost:8080/api/cart
 const cartsRouter = express.Router();
 
-cartsRouter.post("/:id", getToken, CartController.addProdInCartByIdController);
+cartsRouter.post("/:cartID", getToken, CartController.addProdInCartByIdController);
 
-cartsRouter.delete("/:id", getToken, CartController.cleanCartControllers);
+cartsRouter.delete("/:cartID", getToken, CartController.deleteProdCartController);
 
-cartsRouter.get("/:id", getToken, CartController.getCartController);
+cartsRouter.get("/:cartID", getToken, CartController.getCartController);
 
 //esta ruta genera la orden
-cartsRouter.post("/checkout", getToken, CartController.checkOut);
+cartsRouter.post("/:cartID/checkout", getToken, CartController.checkOut);
 
 
 //cartsRouter.post("/:id", getToken, CartController.saveCartControllers); el carro se crea en el usuario

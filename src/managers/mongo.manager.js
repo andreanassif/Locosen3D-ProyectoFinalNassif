@@ -70,16 +70,7 @@ class MongoContainer {
     }
   }
 
-  async addPodInCartById(id){
-    try {
-      await this.model.findByIdAndUpdate({id});
-      console.log(id)
-      logger.info("Update successfully");
-      return
-    } catch (error) {
-      loggerError.error(`Hubo un error ${error}`);
-    }
-  }
+
 }
 
 export { MongoContainer };

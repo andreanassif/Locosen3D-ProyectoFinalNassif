@@ -9,7 +9,7 @@ const cartSchema = new mongoose.Schema(
     },
     products: {
       type: Array,
-      require: true,
+      required: true,
       default: [],
     },
   },

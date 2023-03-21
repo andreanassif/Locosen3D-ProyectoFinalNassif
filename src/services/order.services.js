@@ -1,7 +1,7 @@
 import { DaoOrderContainer } from "../config/daosConfig.js";
 
 
-//la orden se genera y guarda en el checkout de carritp
+//la orden se genera y guarda en el checkout de carrito
 export const saveOrder = async(body)=>{
     return await DaoOrderContainer.save(body)
 }
