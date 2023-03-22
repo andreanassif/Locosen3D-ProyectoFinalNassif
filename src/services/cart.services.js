@@ -9,8 +9,8 @@ export const saveCart = async (userID) => {
   return await DaoCartsContainer.save({ userID });
 };
 
-export const cleanCart = async (cartID) => {
-  return await DaoCartsContainer.cleanCart(cartID);
+export const cleanCart = async (cartID, productID) => {
+  return await DaoCartsContainer.cleanCart(cartID, productID);
 };
 
 export const removeProdById = async (cartID, productID) => {
@@ -18,7 +18,7 @@ export const removeProdById = async (cartID, productID) => {
 };
 
 export const addProdInCartById = async (cartID, productID) => {
-  return await DaoCartsContainer.addPodInCartById(cartID ,productID);
+  return await DaoCartsContainer.addPodInCartById(cartID, productID);
 };
 
 export const getAllCarts = async () => {

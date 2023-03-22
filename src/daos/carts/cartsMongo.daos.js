@@ -1,5 +1,6 @@
 import {MongoContainer} from "../../managers/mongo.manager.js";
 import {loggerError, logger} from "../../loggers/logger.js"
+import { saveOrder } from "../../services/order.services.js";
 //importar dtos y usarlos
 
 
@@ -32,10 +33,20 @@ class DaoCartsMongo extends MongoContainer{
         }
       }
 
+      async cleanCart(cartID, productID){
+        try {
+          const data = await this.model.findByIdAndUpdate({_id:cartID}, {$pull:{products:productID}});
+          logger.info("Producto El carrito se vació correctamente");
+          return
+        } catch (error) {
+          loggerError.error(`Hubo un error ${error}`);
+        }
+      }
+
       async checkOut(cartID, body){
         try {
             const data = await this.modeñl.findById(cartID)
-            data.products.save(body)
+            data.products.saveOrder(body)
             console.log(data)
         } catch (error) {
             loggerError.error(`Hubo un error ${error}`);
