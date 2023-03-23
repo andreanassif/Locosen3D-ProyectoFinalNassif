@@ -1,6 +1,6 @@
 import {getCartById, addProdInCartById, cleanCart, getAllCarts, removeProdById,} from "../services/cart.services.js";
 import { logger, loggerError, loggerWarn } from "../loggers/logger.js";
-import { saveOrder } from "../services/order.services.js";
+//import { saveOrder } from "../services/order.services.js";
 
 //añadir producto al carrito
 export const addProdInCartByIdController = async (req, res) => {
@@ -85,7 +85,7 @@ export const deleteProdCartController = async (req, res) => {
 };
 
 //usuario tiene que poder hacer el checkout: cant productos, precio total, id de prodcutos para disminuir stock, aplicar impuestos, costos de envio funciones de helpers sin exportarlas
-export const checkOut = async (req, res) => {
+/* export const checkOut = async (req, res) => {
   try {
     const { body } = req.body;
     const { cartID } = req.params;
@@ -100,3 +100,4 @@ export const checkOut = async (req, res) => {
     loggerError.error(error);
   }
 };
+ */

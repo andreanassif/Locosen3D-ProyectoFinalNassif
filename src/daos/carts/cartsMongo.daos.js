@@ -1,6 +1,5 @@
 import {MongoContainer} from "../../managers/mongo.manager.js";
 import {loggerError, logger} from "../../loggers/logger.js"
-import { saveOrder } from "../../services/order.services.js";
 //importar dtos y usarlos
 
 
@@ -46,8 +45,8 @@ class DaoCartsMongo extends MongoContainer{
       async checkOut(cartID, body){
         try {
             const data = await this.model.findById(cartID)
-            data.products.saveOrder(body)
-            console.log(data)
+            data.products.push(body)
+            data.save()
         } catch (error) {
             loggerError.error(`Hubo un error ${error}`);
         }

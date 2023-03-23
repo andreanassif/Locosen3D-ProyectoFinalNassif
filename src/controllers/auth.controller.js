@@ -19,7 +19,6 @@ export const registro = async (req, res) => {
     const { body } = req;
     body.password = createHash(body.password);
     const newUser = await saveUser(body);
-    console.log(newUser._id);
     await saveCart(newUser._id);
     res.sendStatus(200);
   } catch (error) {

@@ -15,7 +15,7 @@ cartsRouter.delete("/:cartID", getToken, CartController.deleteProdCartController
 cartsRouter.get("/:cartID", getToken, CartController.getCartController);
 
 //esta ruta genera la orden
-cartsRouter.post("/:cartID/checkout", getToken, CartController.checkOut);
+//cartsRouter.post("/:cartID/checkout", getToken, CartController.checkOut);
 
 
 //cartsRouter.post("/:id", getToken, CartController.saveCartControllers); el carro se crea en el usuario

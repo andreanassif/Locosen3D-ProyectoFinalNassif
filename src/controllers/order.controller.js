@@ -1,9 +1,9 @@
-import {deleteOrder, getOrder, saveOrder, updateOrder } from "../services/order.services.js"
+//import {deleteOrder, getOrder, saveOrder, updateOrder } from "../services/order.services.js"
 import { logger, loggerError, loggerWarn } from "../loggers/logger.js";
 import {twilioClient} from "../messages/twilio.js";
 import {options} from "../config/config.js"
 
-export const getOrderController = async(req,res)=>{
+/* export const getOrderController = async(req,res)=>{
     try {
         const response = await getOrder()
         res.status(200).send(response)
@@ -66,3 +66,4 @@ export const deleteOrderController = async(req,res)=>{
         loggerError.error(error)
     }
 }
+ */

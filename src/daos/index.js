@@ -17,7 +17,6 @@ export async function getApiDao(databaseType) {
     let DaoUserContainer;
     let DaoOrderContainer;
     //let DaoMsjContainer;
-    console.log(databaseType);
   
     switch (databaseType) {
       case "FILES":
@@ -47,7 +46,6 @@ export async function getApiDao(databaseType) {
         DaoOrderContainer = new DaoOrderSQL(options.sqliteDB, "orders");
         break;
       case "MONGO":
-        console.log("estoy aca")
         const { DaoUserMongo } = await import("./users/usersMongo.daos.js");
         const { DaoProductsMongo } = await import("./products/productsMongo.daos.js");
         const { DaoCartsMongo } = await import("./carts/cartsMongo.daos.js");

@@ -24,6 +24,4 @@ app.use('/api', apiRouter);
 const PORT = options.server.PORT;
 const server = app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
 server.on("error", (error) => console.log(`Error in server ${error}`));
-console.log(server)
-
 export { app };
