@@ -1,10 +1,4 @@
-import {
-  getCartById,
-  addProdInCartById,
-  cleanCart,
-  getAllCarts,
-  removeProdById,
-} from "../services/cart.services.js";
+import {getCartById, addProdInCartById, cleanCart, getAllCarts, removeProdById,} from "../services/cart.services.js";
 import { logger, loggerError, loggerWarn } from "../loggers/logger.js";
 import { saveOrder } from "../services/order.services.js";
 

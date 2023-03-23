@@ -9,6 +9,7 @@ class MyMongoClient{
     //metodos para conectarme a la db
     async connect(){
         try {
+            console.log(options.mongoDB.MONGO_AUTHENTICATION)
             this.client.set('strictQuery', false);
             this.client.connect(options.mongoDB.MONGO_AUTHENTICATION );
             console.log("conexion exitosa a la base de datos");

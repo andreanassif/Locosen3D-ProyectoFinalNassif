@@ -45,7 +45,7 @@ class DaoCartsMongo extends MongoContainer{
 
       async checkOut(cartID, body){
         try {
-            const data = await this.modeñl.findById(cartID)
+            const data = await this.model.findById(cartID)
             data.products.saveOrder(body)
             console.log(data)
         } catch (error) {

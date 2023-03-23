@@ -45,7 +45,7 @@ class MongoContainer {
     try {
       await this.model.findByIdAndUpdate(id, body, { new: true });
       logger.info("Update successfully");
-      return;
+      return
     } catch (error) {
       loggerError.error(`Hubo un error ${error}`);
     }
@@ -55,7 +55,7 @@ class MongoContainer {
     try {
       await this.model.findByIdAndDelete(id);
       logger.info("delete successfully");
-      return;
+      return
     } catch (error) {
       loggerError.error(`Hubo un error ${error}`);
     }

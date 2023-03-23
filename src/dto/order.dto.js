@@ -1,9 +1,9 @@
 class OrderDto {
   constructor(username, products, total, quantity) {
-    (this.username = username),
-      (this.products = products),
-      (this.total = total),
-      (this.quantity = quantity);
+    this.username = username,
+    this.products = products,
+    this.total = total,
+    this.quantity = quantity
   }
 }
 

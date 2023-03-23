@@ -11,63 +11,67 @@ import { orderDto } from "../dto/order.dto.js";
 import {cartDto } from "../dto/cart.dto.js";
 
 export async function getApiDao(databaseType) {
-  let DaoProductsContainer;
-  let DaoCartsContainer;
-  let DaoUserContainer;
-  let DaoOrderContainer;
-  //let DaoMsjContainer;
-  console.log(databaseType);
-
-  switch (databaseType) {
-    case "FILES":
-      const { DaoProductsFile } = await import(
-        "./products/productsFiles.daos.js"
-      );
-      const { DaoCartsFile } = await import("./carts/cartsFiles.daos.js");
-      const { DaoUserFile } = await import("./users/usersFiles.daos.js");
-      const { DaoOrderFile } = await import("./orders/orderFiles.daos.js");
-      //conectar a la base de datos
-      DaoProductsContainer = new DaoProductsFile(
-        options.fileSystem.pathProducts
-      );
-      DaoCartsContainer = new DaoCartsFile(options.fileSystem.pathCarts);
-      DaoUserContainer = new DaoUserFile(options.fileSystem.pathUsers);
-      DaoOrderContainer = new DaoOrderFile(options.fileSystem.pathOrders);
-      break;
-    case "SQL":
-      const { DaoUsersSQL } = await import("./users/usersSql.daos.js");
-      const { DaoProductsSQL } = await import("./products/productsSql.daos.js");
-      const { DaoCartsSQL } = await import("./carts/cartsSql.daos.js");
-      const { DaoOrderSQL } = await import("./orders/orderSql.daos.js");
-      //conectar a la base de datos
-      DaoProductsContainer = new DaoProductsSQL(options.sqliteDB, "productos");
-      DaoCartsContainer = new DaoCartsSQL(options.sqliteDB, "carritos");
-      DaoUserContainer = new DaoUsersSQL(options.sqliteDB, "users");
-      DaoOrderContainer = new DaoOrderSQL(options.sqliteDB, "orders");
-      break;
-    case "MONGO":
-      const { DaoUserMongo } = await import("./users/usersMongo.daos.js");
-      const { DaoProductsMongo } = await import(
-        "./products/productsMongo.daos.js"
-      );
-      const { DaoCartsMongo } = await import("./carts/cartsMongo.daos.js");
-      const { DaoOrderMongo } = await import("./orders/orderMongo.daos.js");
-      //conectar a la base de datos
-      const client = new MyMongoClient();
-      await client.connect();
-      DaoProductsContainer = new DaoProductsMongo(ProductModel, productDto);
-      DaoCartsContainer = new DaoCartsMongo(CartModel, cartDto);
-      DaoUserContainer = new DaoUserMongo(UserModel, convertToDto);
-      DaoOrderContainer = new DaoOrderMongo(OrderModel, orderDto);
-
-      break;
-    default:
-      break;
+  try {
+    let DaoProductsContainer;
+    let DaoCartsContainer;
+    let DaoUserContainer;
+    let DaoOrderContainer;
+    //let DaoMsjContainer;
+    console.log(databaseType);
+  
+    switch (databaseType) {
+      case "FILES":
+        const { DaoProductsFile } = await import(
+          "./products/productsFiles.daos.js"
+        );
+        const { DaoCartsFile } = await import("./carts/cartsFiles.daos.js");
+        const { DaoUserFile } = await import("./users/usersFiles.daos.js");
+        const { DaoOrderFile } = await import("./orders/orderFiles.daos.js");
+        //conectar a la base de datos
+        DaoProductsContainer = new DaoProductsFile(
+          options.fileSystem.pathProducts
+        );
+        DaoCartsContainer = new DaoCartsFile(options.fileSystem.pathCarts);
+        DaoUserContainer = new DaoUserFile(options.fileSystem.pathUsers);
+        DaoOrderContainer = new DaoOrderFile(options.fileSystem.pathOrders);
+        break;
+      case "SQL":
+        const { DaoUsersSQL } = await import("./users/usersSql.daos.js");
+        const { DaoProductsSQL } = await import("./products/productsSql.daos.js");
+        const { DaoCartsSQL } = await import("./carts/cartsSql.daos.js");
+        const { DaoOrderSQL } = await import("./orders/orderSql.daos.js");
+        //conectar a la base de datos
+        DaoProductsContainer = new DaoProductsSQL(options.sqliteDB, "productos");
+        DaoCartsContainer = new DaoCartsSQL(options.sqliteDB, "carritos");
+        DaoUserContainer = new DaoUsersSQL(options.sqliteDB, "users");
+        DaoOrderContainer = new DaoOrderSQL(options.sqliteDB, "orders");
+        break;
+      case "MONGO":
+        console.log("estoy aca")
+        const { DaoUserMongo } = await import("./users/usersMongo.daos.js");
+        const { DaoProductsMongo } = await import("./products/productsMongo.daos.js");
+        const { DaoCartsMongo } = await import("./carts/cartsMongo.daos.js");
+        const { DaoOrderMongo } = await import("./orders/orderMongo.daos.js");
+        //conectar a la base de datos
+        const client = new MyMongoClient();
+        await client.connect();
+        DaoProductsContainer = new DaoProductsMongo(ProductModel, productDto);
+        DaoCartsContainer = new DaoCartsMongo(CartModel, cartDto);
+        DaoUserContainer = new DaoUserMongo(UserModel, convertToDto);
+        DaoOrderContainer = new DaoOrderMongo(OrderModel, orderDto);
+  
+        break;
+      default:
+        break;
+    }
+    return {
+      DaoUserContainer,
+      DaoCartsContainer,
+      DaoProductsContainer,
+      DaoOrderContainer,
+    };
+  
+  } catch (error) {
+    console.log(error)
   }
-  return {
-    DaoUserContainer,
-    DaoCartsContainer,
-    DaoProductsContainer,
-    DaoOrderContainer,
-  };
 }

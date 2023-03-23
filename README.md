@@ -12,21 +12,6 @@ $ npm install
 
 $ npm start
 
-# Rutas
-
-Trae todos los usuarios registrados.
-GET http://localhost:8080/api/users
-
-Postear un nuevo producto (AdminRole)
-POST http://localhost:8080/api/products?AdminRole=true
-Bearer Token AdminRole
-
-Ver todos los productos:
-http://localhost:8080/api/products?AdminRole=true
-
-Registro de un usuario
-POST http://localhost:8080/api/auth/registro
-
 # Sigue a mi emprendimiento en Instagram 
 
 ==> https://www.instagram.com/locosen3d/
