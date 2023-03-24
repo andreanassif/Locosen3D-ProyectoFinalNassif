@@ -24,3 +24,5 @@ export const getImgById = async(id, body)=>{
 export const deleteAll = async()=>{
     return await DaoProductsContainer.deleteAll()
 }
+
+//get products por category

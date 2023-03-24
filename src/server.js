@@ -2,8 +2,8 @@ import express from "express";
 //import { logger } from "./loggers/logger.js";
 import { options } from "./config/config.js";
 import "./config/daosConfig.js";
-//import path from "path";
-//import { fileURLToPath } from 'url';
+import path from "path";
+import { fileURLToPath } from 'url';
 import { authRouter } from "./router/auth.js";
 import cors from "cors";
 import { apiRouter } from "./router/index.js";
@@ -17,7 +17,7 @@ app.use(cors());
 app.use('/api/auth', authRouter);
 app.use('/api', apiRouter);
 
-//const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 //config de sesion de usuarios
 

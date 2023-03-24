@@ -32,39 +32,41 @@ class DaoCartsMongo extends MongoContainer{
         }
       }
 
-      async cleanCart(cartID, productID){
+      async cleanCart(cartID){
         try {
-          const data = await this.model.findByIdAndUpdate({_id:cartID}, {$pull:{products:productID}});
-          logger.info("Producto El carrito se vació correctamente");
+          const data = await this.model.findByIdAndUpdate({_id:cartID}, {products:[]});
+          logger.info("El carrito se vació correctamente");
           return
         } catch (error) {
           loggerError.error(`Hubo un error ${error}`);
         }
       }
-
-      async checkOut(cartID, body){
+      async getById(id) {
+    
         try {
-            const data = await this.model.findById(cartID)
-            data.products.push(body)
+          const response = await this.model.findById(id).populate("products");
+          const data = JSON.parse(JSON.stringify(response)); //convertir a formato json
+          const responseDto = this.dto(data);
+          //logger.info(responseDto);
+          return responseDto;
+        } catch (error) {
+          loggerError.error(`Hubo un error ${error}`);
+        }
+      }
+
+/* 
+      async checkOut(cartID, productID){
+        try {
+            
+            const data = await this.model.findByIdAndUpdate({_id:cartID}, {$push:{products:productID}})
+            console.log(data)
+            data.products.$push({body})
             data.save()
         } catch (error) {
             loggerError.error(`Hubo un error ${error}`);
         }
-      }
+      } */
 
-
-    // si quiero usar dtos, tengo que agregarlos aca (ESTAN EN EL CART CONTROLLER)
-    //async cleanCart(id){
-    //    try {
-    //        
-    //    } catch (error) {
-    //        
-    //    }
-        //logica de eliminar el carrito con el id 
-
-        //agregar el producto
-        //
-    //}
 }
 
 export {DaoCartsMongo}

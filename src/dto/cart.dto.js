@@ -1,22 +1,25 @@
+import {productDto} from "./product.dto.js"
 class CartDto{
-    constructor(cart, userID, username, total, quantity){
-        this.userID = userID._id,
-        this.cart = cart.body,
-        this.username = username.username,
-        this.total = total.total,
-        this.quantity = quantity.quantity
+    constructor(cart){
+        this.userID = cart.userID,
+        this.cartID = cart._id,
+        this.products = productDto(cart.products),
+        this.quantity = cart.products.length,
+        this.total = this.calcularTotal()
         
     }
+    calcularTotal(){
+        const Total = this.products.reduce((acc, product)=>{
+          return acc + product.price
+        }, 0)
+        return Total
+      }
 }
 
-export const cartDto = (carts)=>{
-    if(Array.isArray(carts)){
-        const newData = carts.map(cart=>new CartDto(cart));
+export const cartDto = (cart)=>{
+        const newData = new CartDto(cart);
         return newData;
-    }else{
-        const newData = new CartDto(carts);
-        return newData;
-    }
+    
 }
 
 

@@ -7,11 +7,12 @@ class MongoContainer {
   }
 
   async getById(id) {
+    
     try {
       const response = await this.model.findById(id);
       const data = JSON.parse(JSON.stringify(response)); //convertir a formato json
       const responseDto = this.dto(data);
-      logger.info(responseDto);
+      //logger.info(responseDto);
       return responseDto;
     } catch (error) {
       loggerError.error(`Hubo un error ${error}`);

@@ -1,18 +1,16 @@
+
 class OrderDto {
-  constructor(username, products, total, quantity) {
+  constructor(username, id, cart) {
+    this.id = id,
     this.username = username,
-    this.products = products,
-    this.total = total,
-    this.quantity = quantity
+    this.products = cart.products,
+    this.total = cart.total,
+    this.quantity = cart.products.length
   }
 }
 
-export const orderDto = (orders) => {
-  if (Array.isArray(orders)) {
-    const newData = orders.map((order) => new OrderDto(order));
+export const orderDto = (order) => {
+    const newData = new OrderDto(order);
     return newData;
-  } else {
-    const newData = new OrderDto(orders);
-    return newData;
-  }
 };
+

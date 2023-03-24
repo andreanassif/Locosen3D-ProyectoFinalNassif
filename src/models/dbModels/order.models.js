@@ -4,27 +4,30 @@ import mongoose  from "mongoose";
 const orderCollection = "orders";
 
 const orderSchema = new mongoose.Schema({
-    timestamp: Number,
-    username: {
+    
+    userID: {
         type: String,
-        required: true
+        required: false
     },
-    cart: [{
-        id: String,
-        name: String,
-        price: Number,
-        quantity: Number
-    }],
+    products: {
+        type: Array,
+        required: true,
+        default: [],
+    },
     total:{
         type: Number,
-        required: true
+        required: false
     },
     state:{
         type: String,
         default:'generada',
         required: true
     }
-})
+},
+{
+    timestamps: true,
+}
+)
 
 export const OrderModel= mongoose.model(orderCollection, orderSchema)
 

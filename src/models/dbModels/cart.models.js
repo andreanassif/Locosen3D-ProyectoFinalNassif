@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const cartCollection = "carts";
 
@@ -7,11 +7,13 @@ const cartSchema = new mongoose.Schema(
     userID: {
       type: String,
     },
-    products: {
-      type: Array,
-      required: true,
-      default: [],
-    },
+    products: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "products"
+      }
+    ]
+     
   },
   {
     timestamps: true,

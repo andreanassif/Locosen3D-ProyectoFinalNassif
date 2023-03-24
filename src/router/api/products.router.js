@@ -9,15 +9,6 @@ const productsRouter = express.Router();
 
 productsRouter.get("/", ProductsController.getProdsControllers);
 
-productsRouter.get("/:id", ProductsController.getProdByIdControllers);
-
-productsRouter.get(
-  "/category/:category",
-  ProductsController.getProdByCategoryControllers
-);
-
-productsRouter.get("/img/:id", ProductsController.getImgByIdControllers);
-
 productsRouter.post(
   "/",
   getToken,
