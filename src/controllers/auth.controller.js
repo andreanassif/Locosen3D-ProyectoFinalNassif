@@ -49,7 +49,7 @@ export const login = async (req, res) => {
     const token = await SingToken({
       role: user.role,
       userID: user._id,
-      username: user.username
+      username: user.username,
     });
 
     res.json({ token });

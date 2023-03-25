@@ -1,7 +1,15 @@
-import {getCartById, addProdInCartById, cleanCart, getAllCarts, removeProdById,} from "../services/cart.services.js";
+import {
+  getCartById,
+  addProdInCartById,
+  cleanCart,
+  getAllCarts,
+  removeProdById,
+} from "../services/cart.services.js";
 import { logger, loggerError, loggerWarn } from "../loggers/logger.js";
 import { saveOrder } from "../services/order.services.js";
-import {twilioClient} from "../messages/twilio.js";
+import { options } from "../config/config.js";
+import { twilioClient } from "../messages/twilio.js";
+import { mailOptions, transporterEmail } from "../messages/email.js";
 
 //añadir producto al carrito
 export const addProdInCartByIdController = async (req, res) => {
@@ -24,15 +32,14 @@ export const getCartController = async (req, res) => {
     const { id } = req.query;
     if (!id) {
       return res.status(400).json({
-        message: "El carrito no existe"
+        message: "El carrito no existe",
       });
-    } 
+    }
     const cartQuery = await getCartById(id);
     return res.status(200).json({
       message: `El Carrito con Id Nro ${id} tiene los siguientes productos`,
       response: cartQuery,
     });
-
   } catch (error) {
     res.status(400).json({ message: `Hubo un error ${error}` });
     loggerError.error(error);
@@ -89,50 +96,21 @@ export const deleteProdCartController = async (req, res) => {
   }
 };
 
-//usuario tiene que poder hacer el checkout: cant productos, precio total, id de prodcutos para disminuir stock, aplicar impuestos, costos de envio funciones de helpers sin exportarlas
+//chackout + generacion de orden de compra con confirmaciòn en twilio
 export const checkOut = async (req, res) => {
   try {
     const username = req.user;
-    const  {cartID} = req.params;
-    const carrito = await getCartById(cartID)
-    console.log(carrito)
+    const { cartID } = req.params;
+    const carrito = await getCartById(cartID);
+    console.log(carrito);
     const newOrder = await saveOrder(username, carrito);
-    if(newOrder){
-      twilioClient.messages.create(
-          {
-              body:`Se ha registrado un nuevo pedido! Nombre: ${response.name}, Pedido: ${response.id}, email: ${response.username}`,
-              from: options.TWILIO_WAP,
-              to: options.ADMIN_WAP
-          }, (error)=>{
-              if(error){
-                  loggerWarn.warn(`Hubo un error al enviar el msj de Whatsapp al administrador ${error}`)
-              } else {
-                  logger.info(`Mensaje enviado correctamente con el pedido`)
-              }
-          }
-      )
-      twilioClient.messages.create(
-          {
-              body:`Registramos un nuevo pedido! Pedido: ${response.id}, email: ${response.username} `,
-              from: options.TWILIO_WAP,
-              to: `Whatsapp:${newOrder.phone} `
-          }, (error)=>{
-              if(error){
-                  logger.info(`Hubo un error al enviar el mensaje de whatsapp al cliente ${error}`)
-              } else {
-                  logger.info(`Mensaje de whatsapp de pedido enviado correctamente`)
-              }
-          }
-      )
-      return res.status(200).send(response)
-  } else {
-      res.status(400).json({message:`Hubo un error ${error}`})
-      loggerError.error(error)
-  }
-    res.status(200).json({
-      message: `La orden ${newOrder._id} se ha generado correctamente`,
-      response: newOrder,
-    });
+    if (newOrder) {
+      const response = await transporterEmail.sendMail(mailOptions);
+      res.status(200).json({
+        message: `El msj fue enviado ${response} la orden ${newOrder._id} se ha generado correctamente`,
+        response: newOrder,
+      });
+    }
     cleanCart(cartID);
   } catch (error) {
     res.status(400).json({ message: `Hubo un error ${error}` });

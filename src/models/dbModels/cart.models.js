@@ -10,10 +10,9 @@ const cartSchema = new mongoose.Schema(
     products: [
       {
         type: Schema.Types.ObjectId,
-        ref: "products"
-      }
-    ]
-     
+        ref: "products",
+      },
+    ],
   },
   {
     timestamps: true,

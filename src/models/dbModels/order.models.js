@@ -1,6 +1,5 @@
 import mongoose  from "mongoose";
 
-
 const orderCollection = "orders";
 
 const orderSchema = new mongoose.Schema({
@@ -29,5 +28,4 @@ const orderSchema = new mongoose.Schema({
 }
 )
 
-export const OrderModel= mongoose.model(orderCollection, orderSchema)
-
+export const OrderModel= mongoose.model(orderCollection, orderSchema);

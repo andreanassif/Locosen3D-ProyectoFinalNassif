@@ -1,9 +1,8 @@
 import express from "express";
-//import { logger } from "./loggers/logger.js";
 import { options } from "./config/config.js";
 import "./config/daosConfig.js";
 import path from "path";
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from "url";
 import { authRouter } from "./router/auth.js";
 import cors from "cors";
 import { apiRouter } from "./router/index.js";
@@ -14,14 +13,16 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 //routers
-app.use('/api/auth', authRouter);
-app.use('/api', apiRouter);
+app.use("/api/auth", authRouter);
+app.use("/api", apiRouter);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 //config de sesion de usuarios
 
 const PORT = options.server.PORT;
-const server = app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
+const server = app.listen(PORT, () =>
+  console.log(`Server listening on port ${PORT}`)
+);
 server.on("error", (error) => console.log(`Error in server ${error}`));
 export { app };

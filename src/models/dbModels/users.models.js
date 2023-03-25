@@ -1,48 +1,49 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
-const usersCollection = 'users'
+const usersCollection = "users";
 
-mongoose.set('strictQuery', true)
+mongoose.set("strictQuery", true);
 
-const userSchema = new mongoose.Schema({
-    name:String,
-    username:{
-        type:String,
-        required:true,
-        unique: true
+const userSchema = new mongoose.Schema(
+  {
+    name: String,
+    username: {
+      type: String,
+      required: true,
+      unique: true,
     },
-    password:{
-        type:String,
-        required:true
+    password: {
+      type: String,
+      required: true,
     },
     email: {
-        type: String,
-        required: true,
-        unique: true
+      type: String,
+      required: true,
+      unique: true,
     },
     address: {
-        type: String
+      type: String,
     },
     age: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     phone: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     avatar: {
-        type: String,
-        required: true
+      type: String,
+      required: true,
     },
     role: {
-        type: String,
-        default: "user"
-    }
-    
-},
-{
-    timestamps:true
-});
+      type: String,
+      default: "user",
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
-export const UserModel = mongoose.model(usersCollection,userSchema)
+export const UserModel = mongoose.model(usersCollection, userSchema);

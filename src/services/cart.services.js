@@ -1,9 +1,8 @@
 import { DaoCartsContainer } from "../config/daosConfig.js";
 
 export const getCartById = async (id) => {
-  console.log(id)
+  console.log(id);
   return await DaoCartsContainer.getById(id);
-  
 };
 
 //esto es para crear un carrito por usuario generado

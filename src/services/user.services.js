@@ -1,4 +1,3 @@
-//traer validaciones cuando las configure de validations/users.validation.js
 import { DaoUserContainer } from "../config/daosConfig.js";
 
 export const getUsers = async () => {

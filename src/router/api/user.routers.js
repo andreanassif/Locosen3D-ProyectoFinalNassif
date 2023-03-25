@@ -6,8 +6,8 @@ import { AdminRole } from "../../middlewares/checkRoles.js";
 const router = express.Router();
 
 router.get("/", getToken, AdminRole, UserController.getUsersController);
-router.post("/",UserController.saveUserController);
+router.post("/", UserController.saveUserController);
 router.delete("/:id", getToken, AdminRole, UserController.deleteUserController);
 router.delete("/", getToken, AdminRole, UserController.deleteUsersController);
 
-export {router as UserRouter};
+export { router as UserRouter };

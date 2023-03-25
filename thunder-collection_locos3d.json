@@ -1,0 +1,450 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "locos3d",
+    "dateExported": "2023-03-25T01:38:26.230Z",
+    "version": "1.1",
+    "folders": [
+        {
+            "_id": "7009f23c-7804-471c-8fac-258eac0c571b",
+            "name": "Products(admin)",
+            "containerId": "",
+            "created": "2023-03-18T16:30:04.109Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "b4dc700d-98f6-4a70-9a5b-e2c4a0e4a1fa",
+            "name": "Auth",
+            "containerId": "",
+            "created": "2023-03-18T17:52:59.470Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "Cart",
+            "containerId": "",
+            "created": "2023-03-18T19:00:42.548Z",
+            "sortNum": 30000
+        },
+        {
+            "_id": "eca63325-5f62-4218-8a17-977547441af8",
+            "name": "Users",
+            "containerId": "",
+            "created": "2023-03-18T19:00:58.607Z",
+            "sortNum": 40000
+        },
+        {
+            "_id": "7855d432-3097-4d4d-a761-00bdb0c57327",
+            "name": "Products(Users)",
+            "containerId": "",
+            "created": "2023-03-24T17:42:27.874Z",
+            "sortNum": 60000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "4bf4ed4a-d76c-419e-9e55-c80d53cabf52",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b4dc700d-98f6-4a70-9a5b-e2c4a0e4a1fa",
+            "name": "login",
+            "url": "http://localhost:8080/api/auth/login",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-03-18T16:26:15.982Z",
+            "modified": "2023-03-24T23:53:58.087Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"email\": \"SolNassif@gmail.com\",\n  \"password\": \"123456\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "40bb0328-edf0-47d0-aaa4-f7c4df909cba",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "7009f23c-7804-471c-8fac-258eac0c571b",
+            "name": "add Product",
+            "url": "http://localhost:8080/api/products",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-03-18T17:48:42.623Z",
+            "modified": "2023-03-18T18:27:30.819Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Llaveros personalizados\",\n  \"price\": 500,\n  \"thumbnail\": \"https://res.cloudinary.com/dhndpus6m/image/upload/v1659133158/Locosen3D/llavero-foto-dado_t7slhm.jpg\",\n  \"stock\": 10,\n  \"category\": \"Llaveros\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VySUQiOiI2NDE2MDFkMmJlYzQwNGVmYjFkNzE5MjciLCJpYXQiOjE2NzkxNjM5NDksImV4cCI6MTcxMDY5OTk0OX0.18DIsisrnvmwTRkJCPuXWFaGbydE4o89-yIEJqxWqAA"
+            },
+            "tests": []
+        },
+        {
+            "_id": "b0a6d1e7-e23b-4129-bc62-fe8e6e7175b1",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b4dc700d-98f6-4a70-9a5b-e2c4a0e4a1fa",
+            "name": "registro",
+            "url": "http://localhost:8080/api/auth/registro",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2023-03-18T17:53:45.245Z",
+            "modified": "2023-03-24T23:49:58.700Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n    \"username\": \"SolNassif\",\n    \"password\": \"123456\",\n    \"email\": \"SolNassif@gmail.com\",\n    \"address\": \"avenida siempre viva 742\",\n    \"age\": 30,\n    \"phone\":\"+541158928852\",\n    \"avatar\":\"https://rickandmortyapi.com/api/character/avatar/449.jpeg\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "c88347e1-5bd0-48ae-8d44-429639bd0a9a",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "7009f23c-7804-471c-8fac-258eac0c571b",
+            "name": "delete Product",
+            "url": "http://localhost:8080/api/products/:id",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2023-03-18T18:35:40.590Z",
+            "modified": "2023-03-18T18:53:26.662Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\"id\": \"6416033d86443f7e07eb780e\"}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VySUQiOiI2NDE2MDFkMmJlYzQwNGVmYjFkNzE5MjciLCJpYXQiOjE2NzkxNjM5NDksImV4cCI6MTcxMDY5OTk0OX0.18DIsisrnvmwTRkJCPuXWFaGbydE4o89-yIEJqxWqAA"
+            },
+            "tests": []
+        },
+        {
+            "_id": "890dc22c-3f5e-4fd0-8b8f-ff83957a6285",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "7009f23c-7804-471c-8fac-258eac0c571b",
+            "name": "Actualizar un producto",
+            "url": "http://localhost:8080/api/products/641603d886443f7e07eb7817",
+            "method": "PUT",
+            "sortNum": 60000,
+            "created": "2023-03-18T18:37:22.249Z",
+            "modified": "2023-03-20T01:36:43.806Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"price\": 3600\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VySUQiOiI2NDE2MDFkMmJlYzQwNGVmYjFkNzE5MjciLCJpYXQiOjE2NzkxNjM5NDksImV4cCI6MTcxMDY5OTk0OX0.18DIsisrnvmwTRkJCPuXWFaGbydE4o89-yIEJqxWqAA"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1dd20297-ddb7-4678-bff5-7b48f484aa74",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "eca63325-5f62-4218-8a17-977547441af8",
+            "name": "all Users(Admin)",
+            "url": "http://localhost:8080/api/users",
+            "method": "GET",
+            "sortNum": 70000,
+            "created": "2023-03-18T19:01:28.599Z",
+            "modified": "2023-03-24T17:51:37.579Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VySUQiOiI2NDE2MDFkMmJlYzQwNGVmYjFkNzE5MjciLCJpYXQiOjE2NzkxNjM5NDksImV4cCI6MTcxMDY5OTk0OX0.18DIsisrnvmwTRkJCPuXWFaGbydE4o89-yIEJqxWqAA"
+            },
+            "tests": []
+        },
+        {
+            "_id": "1b3b09f2-1189-4401-8f41-ee41d69eadd2",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "add Product Cart Velador Modelo 3 Fucsia",
+            "url": "http://localhost:8080/api/cart/641e3726fd59cdfd2651d7f6",
+            "method": "POST",
+            "sortNum": 100000,
+            "created": "2023-03-19T01:34:31.439Z",
+            "modified": "2023-03-24T23:55:42.155Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productID\": \"6416042586443f7e07eb781a\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MWUzNzI2ZmQ1OWNkZmQyNjUxZDdmNCIsInVzZXJuYW1lIjoiU29sTmFzc2lmIiwiaWF0IjoxNjc5NzAyMDM4LCJleHAiOjE3MTEyMzgwMzh9.pWEIeUZ4dtK7vhtAN3B6oY-NrsMNflPLBqzs4CQqD6c"
+            },
+            "tests": []
+        },
+        {
+            "_id": "87e65d09-5aaa-4a9b-8ae2-73d54cb8044d",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "add Product Cart Mate Personalizado",
+            "url": "http://localhost:8080/api/cart/641e3726fd59cdfd2651d7f6",
+            "method": "POST",
+            "sortNum": 101250,
+            "created": "2023-03-24T17:31:50.731Z",
+            "modified": "2023-03-24T23:56:40.875Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productID\": \"6416037986443f7e07eb7811\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MWUzNzI2ZmQ1OWNkZmQyNjUxZDdmNCIsInVzZXJuYW1lIjoiU29sTmFzc2lmIiwiaWF0IjoxNjc5NzAyMDM4LCJleHAiOjE3MTEyMzgwMzh9.pWEIeUZ4dtK7vhtAN3B6oY-NrsMNflPLBqzs4CQqD6c"
+            },
+            "tests": []
+        },
+        {
+            "_id": "351f0e4e-b72f-4e0a-b5d7-bf3910782459",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "add Product Cart Soportes Notebook",
+            "url": "http://localhost:8080/api/cart/641e3726fd59cdfd2651d7f6",
+            "method": "POST",
+            "sortNum": 102500,
+            "created": "2023-03-24T17:27:32.317Z",
+            "modified": "2023-03-24T23:57:11.674Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productID\": \"641603d886443f7e07eb7817\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MWUzNzI2ZmQ1OWNkZmQyNjUxZDdmNCIsInVzZXJuYW1lIjoiU29sTmFzc2lmIiwiaWF0IjoxNjc5NzAyMDM4LCJleHAiOjE3MTEyMzgwMzh9.pWEIeUZ4dtK7vhtAN3B6oY-NrsMNflPLBqzs4CQqD6c"
+            },
+            "tests": []
+        },
+        {
+            "_id": "9d4c7323-7e2e-4434-966a-b7b674b43867",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "add Product Cart Pulpo Articulado",
+            "url": "http://localhost:8080/api/cart/641e3726fd59cdfd2651d7f6",
+            "method": "POST",
+            "sortNum": 105000,
+            "created": "2023-03-24T17:27:24.798Z",
+            "modified": "2023-03-24T23:57:46.023Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productID\": \"641603a886443f7e07eb7814\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MWUzNzI2ZmQ1OWNkZmQyNjUxZDdmNCIsInVzZXJuYW1lIjoiU29sTmFzc2lmIiwiaWF0IjoxNjc5NzAyMDM4LCJleHAiOjE3MTEyMzgwMzh9.pWEIeUZ4dtK7vhtAN3B6oY-NrsMNflPLBqzs4CQqD6c"
+            },
+            "tests": []
+        },
+        {
+            "_id": "74242ac6-5d2a-40d3-b61e-c8c1133694f7",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "remove Product Cart Mate Personalizado",
+            "url": "http://localhost:8080/api/cart/641783577f5f2da0008ae211",
+            "method": "DELETE",
+            "sortNum": 110000,
+            "created": "2023-03-19T01:54:57.879Z",
+            "modified": "2023-03-24T16:33:43.580Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productID\": \"6416037986443f7e07eb7811\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MTc4MzU3N2Y1ZjJkYTAwMDhhZTIwZiIsImlhdCI6MTY3OTI2MjY0OSwiZXhwIjoxNzEwNzk4NjQ5fQ.Jg1oiSMaKTDdcI3KmkdEYkchUiyyzXV9N57KgB1kZgs"
+            },
+            "tests": []
+        },
+        {
+            "_id": "10c21338-18cf-4d75-8536-7fdd85864354",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "remove Product Cart Pulplo Articulado",
+            "url": "http://localhost:8080/api/cart/641e3726fd59cdfd2651d7f6",
+            "method": "DELETE",
+            "sortNum": 115000,
+            "created": "2023-03-24T17:31:06.380Z",
+            "modified": "2023-03-24T23:58:11.265Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"productID\": \"641603a886443f7e07eb7814\"\n}",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MWUzNzI2ZmQ1OWNkZmQyNjUxZDdmNCIsInVzZXJuYW1lIjoiU29sTmFzc2lmIiwiaWF0IjoxNjc5NzAyMDM4LCJleHAiOjE3MTEyMzgwMzh9.pWEIeUZ4dtK7vhtAN3B6oY-NrsMNflPLBqzs4CQqD6c"
+            },
+            "tests": []
+        },
+        {
+            "_id": "0517f0d1-e939-478d-9183-25fece5f4d8f",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "Ver todos los carritos(Admin)",
+            "url": "http://localhost:8080/api/cart",
+            "method": "GET",
+            "sortNum": 120000,
+            "created": "2023-03-20T02:49:42.107Z",
+            "modified": "2023-03-20T02:51:10.229Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJ1c2VySUQiOiI2NDE2MDFkMmJlYzQwNGVmYjFkNzE5MjciLCJpYXQiOjE2NzkxNjM5NDksImV4cCI6MTcxMDY5OTk0OX0.18DIsisrnvmwTRkJCPuXWFaGbydE4o89-yIEJqxWqAA"
+            },
+            "tests": []
+        },
+        {
+            "_id": "80025f6f-34e9-47d0-977c-df18c159ca2c",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "checkOut",
+            "url": "http://localhost:8080/api/cart/641e3726fd59cdfd2651d7f6/checkout",
+            "method": "POST",
+            "sortNum": 130000,
+            "created": "2023-03-21T02:50:12.695Z",
+            "modified": "2023-03-25T00:00:00.722Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MTc4MzU3N2Y1ZjJkYTAwMDhhZTIwZiIsImlhdCI6MTY3OTI2MjY0OSwiZXhwIjoxNzEwNzk4NjQ5fQ.Jg1oiSMaKTDdcI3KmkdEYkchUiyyzXV9N57KgB1kZgs"
+            },
+            "tests": []
+        },
+        {
+            "_id": "88bd2a58-158c-4ca3-ad06-497f21ee77db",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "7855d432-3097-4d4d-a761-00bdb0c57327",
+            "name": "Ver Todos los Productos",
+            "url": "http://localhost:8080/api/products",
+            "method": "GET",
+            "sortNum": 140000,
+            "created": "2023-03-24T17:42:46.831Z",
+            "modified": "2023-03-24T17:43:37.225Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MTc4MzU3N2Y1ZjJkYTAwMDhhZTIwZiIsImlhdCI6MTY3OTI2MjY0OSwiZXhwIjoxNzEwNzk4NjQ5fQ.Jg1oiSMaKTDdcI3KmkdEYkchUiyyzXV9N57KgB1kZgs"
+            },
+            "tests": []
+        },
+        {
+            "_id": "9e996cd0-c18d-4cb0-85a3-e76148c02bb8",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "7855d432-3097-4d4d-a761-00bdb0c57327",
+            "name": "Ver Todos los Productos por Categoria",
+            "url": "http://localhost:8080/api/products?category=Deco",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2023-03-24T17:44:30.293Z",
+            "modified": "2023-03-24T20:35:01.378Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "category",
+                    "value": "Deco",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MTc4MzU3N2Y1ZjJkYTAwMDhhZTIwZiIsImlhdCI6MTY3OTI2MjY0OSwiZXhwIjoxNzEwNzk4NjQ5fQ.Jg1oiSMaKTDdcI3KmkdEYkchUiyyzXV9N57KgB1kZgs"
+            },
+            "tests": []
+        },
+        {
+            "_id": "42078032-9211-42a1-864d-fd860d833198",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "b90f874b-838a-4c9b-a0df-1cfa936cae75",
+            "name": "Ver mi carrito (Users)",
+            "url": "http://localhost:8080/api/cart?id=641e3726fd59cdfd2651d7f6",
+            "method": "GET",
+            "sortNum": 150000,
+            "created": "2023-03-24T18:40:53.521Z",
+            "modified": "2023-03-24T23:58:52.802Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "641e3726fd59cdfd2651d7f6",
+                    "isPath": false
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsInVzZXJJRCI6IjY0MWUzNzI2ZmQ1OWNkZmQyNjUxZDdmNCIsInVzZXJuYW1lIjoiU29sTmFzc2lmIiwiaWF0IjoxNjc5NzAyMDM4LCJleHAiOjE3MTEyMzgwMzh9.pWEIeUZ4dtK7vhtAN3B6oY-NrsMNflPLBqzs4CQqD6c"
+            },
+            "tests": []
+        },
+        {
+            "_id": "d68b312c-b9ee-4930-9028-ee02995c836c",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "7855d432-3097-4d4d-a761-00bdb0c57327",
+            "name": "ver un producto",
+            "url": "http://localhost:8080/api/products?id=6416037986443f7e07eb7811",
+            "method": "GET",
+            "sortNum": 160000,
+            "created": "2023-03-24T20:36:53.166Z",
+            "modified": "2023-03-24T20:42:55.370Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "6416037986443f7e07eb7811",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "a76f0ae6-965c-4669-a056-7039b2bb9ac5",
+            "colId": "fa06e189-c260-4efc-a97e-8b76e961c57d",
+            "containerId": "7855d432-3097-4d4d-a761-00bdb0c57327",
+            "name": "Producto no existe",
+            "url": "http://localhost:8080/api/products?id=lifsghawhgvaoirjais",
+            "method": "GET",
+            "sortNum": 170000,
+            "created": "2023-03-24T20:51:10.743Z",
+            "modified": "2023-03-24T20:52:11.253Z",
+            "headers": [],
+            "params": [
+                {
+                    "name": "id",
+                    "value": "lifsghawhgvaoirjais",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        }
+    ]
+}

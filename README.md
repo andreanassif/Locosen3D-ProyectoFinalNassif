@@ -16,3 +16,26 @@ $ npm start
 
 ==> https://www.instagram.com/locosen3d/
 
+# Endpoints del proyecto
+
+Se sube al repo el archivo: thunder-collection_locos3d.json
+Con todas las rutas y parametros para
+
+(Admin):
+Crear un producto
+Eliminar un producto
+Modificar un producto
+Ver todos los carritos
+Ver todos los usuarios
+Filtrar productos por id o category
+
+Productos (User):
+Agregar un producto al carrito
+Eliminar un producto del carrito
+Vaciar el carrito
+Consultar el Carrito
+Realizar el checkout y generar la orden de compra
+Filtrar productos por id o category
+
+
+

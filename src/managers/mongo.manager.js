@@ -1,5 +1,4 @@
 import { logger, loggerError, loggerWarn } from "../loggers/logger.js";
-
 class MongoContainer {
   constructor(model, dto) {
     this.model = model;
@@ -7,12 +6,11 @@ class MongoContainer {
   }
 
   async getById(id) {
-    
     try {
       const response = await this.model.findById(id);
-      const data = JSON.parse(JSON.stringify(response)); //convertir a formato json
+      const data = JSON.parse(JSON.stringify(response));
       const responseDto = this.dto(data);
-      //logger.info(responseDto);
+      logger.info(responseDto);
       return responseDto;
     } catch (error) {
       loggerError.error(`Hubo un error ${error}`);
@@ -46,7 +44,7 @@ class MongoContainer {
     try {
       await this.model.findByIdAndUpdate(id, body, { new: true });
       logger.info("Update successfully");
-      return
+      return;
     } catch (error) {
       loggerError.error(`Hubo un error ${error}`);
     }
@@ -56,7 +54,7 @@ class MongoContainer {
     try {
       await this.model.findByIdAndDelete(id);
       logger.info("delete successfully");
-      return
+      return;
     } catch (error) {
       loggerError.error(`Hubo un error ${error}`);
     }
