@@ -7,8 +7,8 @@ import {
 } from "../services/cart.services.js";
 import { logger, loggerError, loggerWarn } from "../loggers/logger.js";
 import { saveOrder } from "../services/order.services.js";
-import { options } from "../config/config.js";
-import { twilioClient } from "../messages/twilio.js";
+//import { options } from "../config/config.js";
+//import { twilioClient } from "../messages/twilio.js";
 import { mailOptions, transporterEmail } from "../messages/email.js";
 
 //añadir producto al carrito
