@@ -37,5 +37,9 @@ Consultar el Carrito
 Realizar el checkout y generar la orden de compra
 Filtrar productos por id o category
 
+#Deploy en render.com
+
+https://ecommerce-nassif.onrender.com/api/products
+
 
 
